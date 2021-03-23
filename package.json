@@ -1,5 +1,5 @@
 {
-  "name": "PT15315-WEB",
+  "name": "typescript",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,5 +15,9 @@
     "ts-loader": "^8.0.18",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "typescript": "^4.2.3",
+    "webpack": "^5.26.3"
   }
 }
