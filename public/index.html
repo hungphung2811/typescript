@@ -7,13 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <h1 class="text-center text-xl font-momo font-semibold mt-10 uppercase">typesctipt basics</h1>
-    <main class="px-64 mt-10">
-        <div id="mainContentId" class="grid grid-cols-4"></div>
-    </main>
+    <div class="flex items-center justify-center h-screen">
+        <div class="mb-20">
+            <p class="font-semibold text-xl font-momo mb-5 uppercase">moi ban nhap ten</p>
+            <input type="text" class="px-2 py-0.5  border border-gray-300">
+            <button id="btnLoginId" class="px-2 py-1 bg-yellow-500 border text-sm font-semibold rounded">gui</button>
+            <p class="text-xs text-red-500 mt-3" id="errorId"></p>
+        </div>
+    </div>
+    <div id="rootPlayId" class="bg-gray-200 h-screen pt-10 hidden">
+        <h1 class="mb-10 text-center text-xl font-momo font-semibold uppercase">Assignment Typescript</h1>
+        <main class="px-32 grid grid-cols-12 gap-8">
+            <div class="col-span-3 shadow border px-5 py-3 font-momo font-semibold text-sm text-gray-700">
+                <div class="mt-5">
+                    <span>thoi gian :</span>
+                    <span class="ml-3" id="timeId">0</span> s
+                </div>
+                <div class="mt-5">
+                    <span>Người chơi :</span>
+                    <span class="ml-3" id="userNameId">hung</span>
+                </div>
+                <div class="mt-5">
+                    <span>Điểm :</span>
+                    <span class="ml-3" id="pointId">0</span>
+                </div>
+                <div class="border-t border-gray-200 pt-5">
+                    <button class="bg-yellow-500 rounded px-1 py-0.5 shadow font-semibold" id="rePlayId">choi
+                        lai</button>
+                </div>
+            </div>
+            <div id="mainContentId" class="col-span-9 grid grid-cols-5 gap-4 shadow"></div>
+        </main>
+    </div>
 </body>
 
 </html>

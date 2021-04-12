@@ -1,3 +1,4 @@
+import _ from 'lodash';
 class Lab1 {
     bai1() {
         let number1: number = 5;
@@ -51,7 +52,9 @@ class Lab1 {
             let pokemon: any = await data.json()
             arrPokemons = [...arrPokemons, { id: pokemon.id, name: pokemon.name, image: pokemon.sprites.back_default }]
         }
-        return arrPokemons;
+
+        const newArrayPokemons: PokemonInterface[] = _.shuffle(arrPokemons); 
+        return newArrayPokemons;
     }
 }
 

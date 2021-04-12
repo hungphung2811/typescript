@@ -1,28 +1,31 @@
-import lab from './labs/lab1';
+import ASM from './asm_pokemon'
 
-// lab.bai1();
-// lab.bai3();
-// let resultBai2: number = lab.bai2();
-// console.log(resultBai2);
+function main(): void {
+    const btnLoginElement: HTMLElement = document.querySelector('#btnLoginId');
+    btnLoginElement.addEventListener('click', async () => {
 
-const main = (): void => {
-    const mainContentElement = document.querySelector('#mainContentId');
-    lab.bai5().then(data => {
-        console.log(data);
-        for (let i = 9; i <= 20; i++) {
-            const random = Math.floor(Math.random() * 10);
-            const pokemon = data[random];
-            const divElement = document.createElement('div');
-            divElement.classList.add('border', 'border-gray-300','p-1', 'm-2', 'shadow','text-center');
-            divElement.innerHTML = /*html*/ `
-                <div class="flex justify-center">
-                    <img src="${pokemon.image}" title="${pokemon.name}" />
-                </div>
-                <p>${pokemon.name}</p>
-            `;
-            mainContentElement.appendChild(divElement);
+        const userName:string = btnLoginElement.parentElement.querySelector('input').value;
+        const errorElement:HTMLElement = document.querySelector('#errorId');
+        if (userName.trim().length < 5 || userName.trim().length > 20) {
+            errorElement.textContent = 'ban can nhap ten tu 5 - 20 ki tu'
+            return;
+        } else {
+            btnLoginElement.parentElement.parentElement.classList.add('hidden');
+            document.querySelector('#rootPlayId').classList.remove('hidden');
+            const asm = new ASM(0, 0, 0, 100, userName);
+            await asm.render();
+            await asm.afterRender();
+            asm.handerCountTime();
+
+            document.querySelector('#rePlayId').addEventListener("click", async () => {
+                await asm.render();
+                await asm.afterRender();
+                asm.handerCountTime(100);
+            })
         }
-    });
+
+    })
+
 }
 
-main();
+main()
