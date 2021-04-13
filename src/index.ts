@@ -4,8 +4,8 @@ function main(): void {
     const btnLoginElement: HTMLElement = document.querySelector('#btnLoginId');
     btnLoginElement.addEventListener('click', async () => {
 
-        const userName:string = btnLoginElement.parentElement.querySelector('input').value;
-        const errorElement:HTMLElement = document.querySelector('#errorId');
+        const userName: string = btnLoginElement.parentElement.querySelector('input').value;
+        const errorElement: HTMLElement = document.querySelector('#errorId');
         if (userName.trim().length < 5 || userName.trim().length > 20) {
             errorElement.textContent = 'ban can nhap ten tu 5 - 20 ki tu'
             return;

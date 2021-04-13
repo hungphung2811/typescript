@@ -5,6 +5,8 @@ class lab4 {
         }
         let add: AddFnInterface;
         add = (n1: number, n2: number) => n1 + n2;
+        console.log('lab4_bai1 : ',add(1,1));
+        
     }
     bai2() {
         interface NameInterface {
@@ -15,14 +17,14 @@ class lab4 {
             greet(phrase: string): void;
         }
 
-        class Person {
-            name: string;
-            outputName: string;
+        class Person implements GreetableInterface {
+            name;
+            outputName;
             constructor(name: string) {
                 this.name = name;
             }
             greet(param) {
-                this.outputName = param + name;
+                this.outputName = param + this.name;
                 console.log(this.outputName);
             }
         }
@@ -30,6 +32,8 @@ class lab4 {
         let user1: GreetableInterface;
         user1 = new Person('hung');
         user1.greet('alo alo ten toi la :');
+        console.log(user1);
+        
     }
     bai3() {
         abstract class Department {
@@ -73,4 +77,7 @@ class lab4 {
         id.addEmployee('max');
         id.addEmployee('manu');
     }
+    
 }
+
+export default new lab4;

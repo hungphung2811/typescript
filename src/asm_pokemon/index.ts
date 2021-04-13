@@ -8,6 +8,8 @@ class ASM {
     countChooseSuccess: number;
     time: number;
     userName: string;
+    status: boolean;
+    interval;
     constructor(point, totalPokemon, countChooseSuccess, time, userName) {
         this.point = point;
         this.totalPokemon = totalPokemon;
@@ -17,6 +19,7 @@ class ASM {
     }
 
     async render() {
+        this.status = false;
         document.querySelector('#userNameId').textContent = this.userName;
         await getPokemons.createAndShufflePokemons().then(pokemons => {
             this.totalPokemon = pokemons.length;
@@ -39,7 +42,6 @@ class ASM {
     }
     afterRender() {
         const pokemonElements = document.querySelectorAll('.pokemon');
-
         pokemonElements.forEach(btnPokemon => {
             btnPokemon.addEventListener("click", () => {
                 btnPokemon.classList.add('bg-gray-100', 'choosed');
@@ -89,22 +91,26 @@ class ASM {
     handerCountChooseSuccess() {
         this.countChooseSuccess++;
         if (this.countChooseSuccess === this.totalPokemon / 2) {
+            this.status = true;
+            clearInterval(this.interval);
             const html = /*html */ `
             <div class="col-span-9 text-center m-auto">
                 <h3 class="animate-bounce text-2xl"> you win</h3>
             </div>
-
             `
             document.querySelector('#mainContentId').innerHTML = html;
         }
     }
-    handerCountTime(time = this.time) {
-        const interval = setInterval(() => {
+    handerCountTime(time = this.time, statusWin = this.status) {
+        clearInterval(this.interval);
+        this.interval = setInterval(() => {
             time--;
-
             document.querySelector('#timeId').textContent = `${time}`;
+            if (statusWin === true) {
+                clearInterval(this.interval);
+            }
             if (time == 0) {
-                clearInterval(interval);
+                clearInterval(this.interval);
                 const html = /*html */ `
                     <div class="col-span-9 text-center m-auto">
                         <h3 class="animate-bounce text-2xl"> you lose</h3>

@@ -20,4 +20,4 @@ class Lab3 {
     }
 }
 
-export default Lab3;
+export default new Lab3;
