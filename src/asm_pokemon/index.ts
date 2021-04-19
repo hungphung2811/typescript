@@ -88,6 +88,7 @@ class ASM {
             }, 500);
         })
     }
+    
     handerCountChooseSuccess() {
         this.countChooseSuccess++;
         if (this.countChooseSuccess === this.totalPokemon / 2) {
